@@ -1,0 +1,47 @@
+{
+  "name": "__MSG_name__",
+  "description": "__MSG_description__",
+  "version": "1.0.0",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.google.com <%= htmlWebpackPlugin.options.serverUrl %>; object-src 'self'",
+  "homepage_url": "http://extface.com",
+  "default_locale": "en",
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": [
+        "https://*.plnkr.co/*"
+      ],
+      "js": ["plunker.content.bundle.js"],
+      "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "default_title": "__MSG_default_title__",
+    "default_icon": "img/48.png",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "popup.html"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "48": "img/48.png",
+    "128": "img/128.png"
+  },
+  "permissions": [
+    "contextMenus",
+    "background",
+    "activeTab",
+    "storage",
+    "cookies",
+    "notifications",
+    "tabs",
+    "tts",
+    "webRequest",
+    "https://*.plnkr.co/*",
+    "http://*.plnkr.co/*"
+  ],
+  "manifest_version": 2
+}

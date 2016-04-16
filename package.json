@@ -1,0 +1,41 @@
+{
+  "name": "plunker-web-extension",
+  "version": "1.0.0",
+  "description": "Helping developers make the web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "plunker",
+    "plnkr.co",
+    "plnkr"
+  ],
+  "author": "Alex Vangelov",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "~1.13.0",
+    "angular": "~1.5.3",
+    "angular-aria": "~1.5.3",
+    "angular-messages": "~1.5.3",
+    "angular-animate": "~1.5.3",
+    "angular-material": "~1.0.7",
+    "html-webpack-plugin": "~2.15.0",
+    "es6-promise": "~3.1.2",
+    "html-loader": "~0.4.3",
+    "coffee-script": "~1.10.0",
+    "coffee-loader": "~0.7.2",
+    "ng-cache-loader": "0.0.15",
+    "style-loader": "~0.13.1",
+    "css-loader": "~0.23.1",
+    "node-sass": "~3.4.2",
+    "sass-loader": "~3.2.0",
+    "ng-annotate-loader": "~0.1.0",
+    "babel-core": "~6.7.6",
+    "babel-loader": "~6.2.4",
+    "jshint": "~2.9.1",
+    "jshint-loader": "~0.8.3",
+    "file-loader": "~0.8.5",
+    "url-loader": "~0.5.7"
+  }
+}

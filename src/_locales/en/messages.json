@@ -1,0 +1,11 @@
+{
+  "name": {
+    "message": "Plunker WebExtension"
+  },
+  "description": {
+    "message": "Helping developers make the web"
+  },
+  "default_title": {
+    "message": "Plunker"
+  }
+}

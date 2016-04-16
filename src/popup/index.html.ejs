@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app="ef" ng-csp>
+  <head>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      #load-fun{position:absolute;overflow:hidden;top:50%;left:50%;margin-right:-50%;transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}#lightmask{position:fixed;top:0px;right:-350px;-webkit-animation:lightmove 5s;-moz-animation:lightmove 5s;animation:lightmove 5s;}@-webkit-keyframes lightmove{50% {right: 500px;}}@keyframes lightmove {50% {right: 500px;}}
+    </style>
+  </head>
+  <body>
+    <ui-view layout="column" flex ng-cloak>
+      
+    </ui-view>
+  </body>
+</html>
