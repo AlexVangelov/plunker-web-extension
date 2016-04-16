@@ -4,6 +4,8 @@
   "description": "Helping developers make the web",
   "main": "index.js",
   "scripts": {
+    "build": "node_modules/.bin/webpack -d --optimize-minimize",
+    "watch": "node_modules/.bin/webpack --progress --colors --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
