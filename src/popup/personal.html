@@ -1,16 +1,50 @@
-<div class='personal' ng-cloak>
+<div class="personal" ng-cloak>
   <md-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="My Plunks">
-        <md-content class="md-padding">
-          My Plunks
-        </md-content>
+    <md-toolbar class="md-hue-2" style="height: 50px;">
+      <div class="md-toolbar-tools">
+        <md-button class='plunker-btn' aria-label="Plunker" ng-click="openPlunker()">
+          <img ng-src="{{plunkerIcon}}">
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="openEditor()">
+          <md-icon md-svg-src="popup/img/pencil.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button md-primary" aria-label="My plunks">
+          <md-icon md-svg-src="popup/img/verified.svg"></md-icon>
+        </md-button>
+        <md-button class="md-icon-button md-primary" aria-label="Favorites">
+          <md-icon md-svg-src="popup/img/star.svg"></md-icon>
+        </md-button>
+        <span flex></span>
+        <md-button class="md-icon-button md-raised md-primary" aria-label="User" ng-click="login()">
+          <md-icon md-svg-src="popup/img/account-key.svg"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-input-container class="md-block" flex style="margin-bottom: 0;">
+      <label>Search History</label>
+      <input class="md-block" ng-model="user.title" md-autofocus autofocus ng-disabled="true">
+    </md-input-container>
+    <!--<md-tabs md-dynamic-height md-border-bottom>
+      <md-tab id="my_plunks">
+        <md-tab-label>My Plunks</md-tab-label>
+        <md-tab-body>
+          <md-input-container class="md-block" flex>
+            <label>Search</label>
+            <input class="md-block" ng-model="user.title" md-autofocus autofocus>
+          </md-input-container>
+          <md-list ng-cloak>
+            <md-list-item ng-repeat="topping in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18]">
+              <p> aparagraph </p>
+            </md-list-item>
+          </md-list>
+        </md-tab-body>
       </md-tab>
-      <md-tab label="Favorites">
-        <md-content class="md-padding">
+      <md-tab id="favorites">
+        <md-tab-label>Favorites</md-tab-label>
+        <md-tab-body>
           Favorites
-        </md-content>
+        </md-tab-body>
       </md-tab>
     </md-tabs>
-  </md-content>
+  </md-content>-->
 </div>

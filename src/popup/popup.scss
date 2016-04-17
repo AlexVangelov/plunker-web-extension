@@ -2,4 +2,13 @@ plunker {
   .personal {
     min-width: 250px;
   }
+  .md-errors-spacer {
+    display: none;
+  }
+  .md-toolbar-tools .md-button.plunker-btn {
+    min-width: inherit; 
+    padding: 0; 
+    margin-top: 15px; 
+    margin-left: -15px;
+  }
 }
