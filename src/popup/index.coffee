@@ -17,25 +17,51 @@ angular.module 'plunker', ['ngMaterial']
 .directive 'plunker', ()->
   template: require('./personal.html')
   controller: ($scope)->
+    port = chrome.runtime.connect
+      name: 'plunker'
+
+    userPlunksListener = (msg)->
+      if msg.action is 'getUserPlunks'
+        if !msg.error
+          $scope.userPlunks = msg.data
+          $scope.$apply();
+        port.onMessage.removeListener userPlunksListener
+    
+    favoritePlunksListener = (msg)->
+      if msg.action is 'getFavoritePlunks'
+        if !msg.error
+          $scope.favoritePlunks = msg.data
+        port.onMessage.removeListener favoritePlunksListener
+    
     $scope.plunkerIcon = require('../img/48.png')
+    
+    if (githubUserData = localStorage.githubUser)
+      $scope.githubUser = JSON.parse githubUserData
+      port.onMessage.addListener userPlunksListener
+      port.onMessage.addListener favoritePlunksListener
+      port.postMessage
+        action: 'getUserPlunks'
+      port.postMessage
+        action: 'getFavoritePlunks'
+        
     $scope.openPlunker = ()->
       chrome.tabs.create
         "url": "https://plnkr.co"
+        
     $scope.openEditor = ()->
       chrome.tabs.create
         "url": "https://plnkr.co/edit"
+    
+    $scope.openPlunk = (plunk)->
+      chrome.tabs.create
+        "url": "https://plnkr.co/edit/#{plunk.id}?p=preview"
+
+    $scope.logout = ()->
+      if confirm("Are you sure you want to logout?")
+        localStorage.clear()
+        $scope.githubUser = undefined
+        
     $scope.login = ()->
-      #TODO move me to background
-      fetch "https://api.plnkr.co/sessions",
-        credentials: 'include'
-        method: 'POST'
-        headers:
-          "Content-Type": "application/json"
-      .then (response)->
-        response.json().then (responseJson)->
-          localStorage.sessionId = responseJson.id
-          fetch "http://#{responseJson.url}"
-          .then (responseSession)->
-            responseSession.json().then (responseSessionJson)->
-              console.log responseSessionJson
+      port.postMessage
+        action: 'login'
     return

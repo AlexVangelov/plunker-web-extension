@@ -15,15 +15,32 @@
           <md-icon md-svg-src="popup/img/star.svg"></md-icon>
         </md-button>
         <span flex></span>
-        <md-button class="md-icon-button md-raised md-primary" aria-label="User" ng-click="login()">
+        <md-button ng-if="!githubUser" class="md-icon-button md-raised md-primary" aria-label="User" ng-click="login()">
           <md-icon md-svg-src="popup/img/account-key.svg"></md-icon>
+        </md-button>
+        <md-button ng-if="githubUser" class="md-icon-button md-raised md-primary" aria-label="User" ng-click="logout()">
+          <img ng-if="githubUser" ng-src="{{githubUser.avatar_url}}" class="md-avatar" alt="{{githubUser.login}}" />
         </md-button>
       </div>
     </md-toolbar>
     <md-input-container class="md-block" flex style="margin-bottom: 0;">
-      <label>Search History</label>
+      <label>Search</label>
       <input class="md-block" ng-model="user.title" md-autofocus autofocus ng-disabled="true">
     </md-input-container>
+    <section ng-if="userPlunks">
+      <md-subheader class="md-primary">My Plunks</md-subheader>
+      <md-list>
+        <md-list-item class="md-2-line" ng-repeat="userPlunk in userPlunks" ng-click="openPlunk(userPlunk)">
+          <img ng-src="https://shot.plnkr.co/{{userPlunk.id}}.png?d={{userPlunk.updated_at}}" class="md-avatar md-whiteframe-1dp" style="border-radius: 0; margin-top: 0px;">
+          <div class="md-list-item-text">
+            <h3>{{userPlunk.description}}</h3>
+            <small>
+              {{userPlunk.created_at}}
+            </small>
+          </div>
+        </md-list-item>
+      </md-list>
+    </section>
     <!--<md-tabs md-dynamic-height md-border-bottom>
       <md-tab id="my_plunks">
         <md-tab-label>My Plunks</md-tab-label>

@@ -8,6 +8,7 @@ module.exports = {
     'plunker.popup': './popup/index.coffee',
     'plinker.background':  './background/index.coffee',
     'plunker.content': './content/index.coffee',
+    'plunker.content.www': './content/www/index.coffee',
     'plunker.options': './options/index.coffee'
   },
   output: {
@@ -37,7 +38,7 @@ module.exports = {
       filename: 'background.html',
       template: 'background/index.html.ejs',
       inject:   'body',
-      chunks: ['plunker.background']
+      chunks: ['plinker.background']
     }),
     new HtmlWebpackPlugin({
       title: 'Plunker',
