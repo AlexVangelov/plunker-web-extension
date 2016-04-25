@@ -6,7 +6,7 @@ module.exports = {
   context: __dirname + "/src",
   entry: {
     'plunker.popup': './popup/index.coffee',
-    'plinker.background':  './background/index.coffee',
+    'plunker.background':  './background/index.coffee',
     'plunker.content': './content/index.coffee',
     'plunker.content.www': './content/www/index.coffee',
     'plunker.options': './options/index.coffee'
@@ -38,7 +38,7 @@ module.exports = {
       filename: 'background.html',
       template: 'background/index.html.ejs',
       inject:   'body',
-      chunks: ['plinker.background']
+      chunks: ['plunker.background']
     }),
     new HtmlWebpackPlugin({
       title: 'Plunker',
