@@ -31,6 +31,7 @@ angular.module 'plunker', ['ngMaterial']
       if msg.action is 'getFavoritePlunks'
         if !msg.error
           $scope.favoritePlunks = msg.data
+          $scope.$apply();
         port.onMessage.removeListener favoritePlunksListener
     
     $scope.plunkerIcon = require('../img/48.png')

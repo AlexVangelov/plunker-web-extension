@@ -8,12 +8,12 @@
         <md-button class="md-icon-button" aria-label="Edit" ng-click="openEditor()">
           <md-icon md-svg-src="popup/img/pencil.svg"></md-icon>
         </md-button>
-        <md-button class="md-icon-button md-primary" aria-label="My plunks">
+        <!--<md-button class="md-icon-button md-primary" aria-label="My plunks">
           <md-icon md-svg-src="popup/img/verified.svg"></md-icon>
         </md-button>
         <md-button class="md-icon-button md-primary" aria-label="Favorites">
           <md-icon md-svg-src="popup/img/star.svg"></md-icon>
-        </md-button>
+        </md-button>-->
         <span flex></span>
         <md-button ng-if="!githubUser" class="md-icon-button md-raised md-primary" aria-label="User" ng-click="login()">
           <md-icon md-svg-src="popup/img/account-key.svg"></md-icon>
@@ -23,20 +23,38 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-input-container class="md-block" flex style="margin-bottom: 0;">
+    <md-input-container class="md-block" flex style="margin-bottom: 5px; margin-top: 12px;">
       <label>Search</label>
-      <input class="md-block" ng-model="user.title" md-autofocus autofocus ng-disabled="true">
+      <input class="md-block" ng-model="user.title" md-autofocus autofocus ng-disabled="!userPlunks">
     </md-input-container>
     <section ng-if="userPlunks">
-      <md-subheader class="md-primary">My Plunks</md-subheader>
+      <md-toolbar class="md-primary plunks-list-section">
+        <div class="md-toolbar-tools">My Plunks</div>
+      </md-toolbar>
       <md-list>
-        <md-list-item class="md-2-line" ng-repeat="userPlunk in userPlunks" ng-click="openPlunk(userPlunk)">
-          <img ng-src="https://shot.plnkr.co/{{userPlunk.id}}.png?d={{userPlunk.updated_at}}" class="md-avatar md-whiteframe-1dp" style="border-radius: 0; margin-top: 0px;">
+        <md-list-item class="plunk-list-item" ng-repeat="plunk in userPlunks" ng-click="openPlunk(plunk)">
+          <img ng-src="https://shot.plnkr.co/{{plunk.id}}.png?d={{plunk.updated_at}}" class="md-avatar plunk-shot md-whiteframe-1dp">
           <div class="md-list-item-text">
-            <h3>{{userPlunk.description}}</h3>
-            <small>
-              {{userPlunk.created_at}}
-            </small>
+            <div>{{plunk.description}}</div>
+            <md-chips ng-model="plunk.tags" readonly="true">
+              <md-chip-template>{{$chip}}</md-chip-template>
+            </md-chips>
+          </div>
+        </md-list-item>
+      </md-list>
+    </section>
+    <section ng-if="favoritePlunks">
+      <md-toolbar class="md-primary plunks-list-section">
+        <div class="md-toolbar-tools">Favorites</div>
+      </md-toolbar>
+      <md-list>
+        <md-list-item class="plunk-list-item" ng-repeat="plunk in favoritePlunks" ng-click="openPlunk(plunk)">
+          <img ng-src="https://shot.plnkr.co/{{plunk.id}}.png?d={{plunk.updated_at}}" class="md-avatar plunk-shot md-whiteframe-1dp">
+          <div class="md-list-item-text">
+            <div>{{plunk.description}}</div>
+            <md-chips ng-model="plunk.tags" readonly="true">
+              <md-chip-template>{{$chip}}</md-chip-template>
+            </md-chips>
           </div>
         </md-list-item>
       </md-list>
