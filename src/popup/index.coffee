@@ -65,4 +65,9 @@ angular.module 'plunker', ['ngMaterial']
     $scope.login = ()->
       port.postMessage
         action: 'login'
+        
+    $scope.filterPlunks = ()->
+      filterRegex = new RegExp("#{$scope.filter.toLowerCase()}")
+      for plunk in document.getElementsByClassName("plunk-list-item")
+        plunk.style.display = if filterRegex.test(plunk.textContent.toLowerCase()) then '' else 'none'
     return

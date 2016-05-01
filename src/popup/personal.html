@@ -24,8 +24,8 @@
       </div>
     </md-toolbar>
     <md-input-container class="md-block" flex style="margin-bottom: 5px; margin-top: 12px;">
-      <label>Search</label>
-      <input class="md-block" ng-model="user.title" md-autofocus autofocus ng-disabled="!userPlunks">
+      <label>Filter</label>
+      <input class="md-block" ng-keyup="filterPlunks()" ng-model="filter" md-autofocus autofocus ng-disabled="!userPlunks">
     </md-input-container>
     <section ng-if="userPlunks">
       <md-toolbar class="md-primary plunks-list-section">
