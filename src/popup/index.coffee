@@ -16,7 +16,7 @@ angular.module 'plunker', ['ngMaterial']
 
 .directive 'plunker', ()->
   template: require('./personal.html')
-  controller: ($scope)->
+  controller: ($scope, $mdDialog)->
     port = chrome.runtime.connect
       name: 'plunker'
 
@@ -58,9 +58,8 @@ angular.module 'plunker', ['ngMaterial']
         "url": "https://plnkr.co/edit/#{plunk.id}?p=preview"
 
     $scope.logout = ()->
-      if confirm("Are you sure you want to logout?")
-        localStorage.clear()
-        $scope.githubUser = undefined
+      localStorage.clear()
+      $scope.githubUser = undefined
         
     $scope.login = ()->
       port.postMessage

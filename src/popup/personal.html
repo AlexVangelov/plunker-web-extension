@@ -18,9 +18,18 @@
         <md-button ng-if="!githubUser" class="md-icon-button md-raised md-primary" aria-label="User" ng-click="login()">
           <md-icon md-svg-src="popup/img/account-key.svg"></md-icon>
         </md-button>
-        <md-button ng-if="githubUser" class="md-icon-button md-raised md-primary" aria-label="User" ng-click="logout()">
-          <img ng-if="githubUser" ng-src="{{githubUser.avatar_url}}" class="md-avatar" alt="{{githubUser.login}}" />
-        </md-button>
+        <md-menu ng-if="githubUser">
+          <md-button class="md-icon-button md-raised md-primary" aria-label="User" ng-click="$mdMenu.open($event)">
+            <img ng-if="githubUser" ng-src="{{githubUser.avatar_url}}" class="md-avatar" alt="{{githubUser.login}}" />
+          </md-button>
+          <md-menu-content width="4">
+            <md-menu-item>
+              <md-button ng-click="logout()">
+                Sign out {{githubUser.login}}
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
       </div>
     </md-toolbar>
     <md-input-container class="md-block" flex style="margin-bottom: 5px; margin-top: 12px;">

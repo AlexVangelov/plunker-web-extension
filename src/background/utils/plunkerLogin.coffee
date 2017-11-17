@@ -14,7 +14,7 @@ plunkerLogin = (callback)->
       , (window)->
         authListener = (tabId, changeInfo, tab)->
           if tabId is window.tabs[0].id
-            if (tab.url.match(/^http:\/\/plnkr.co\/auth\/github\?code=/) and tab.title.match(/^Plunker/))
+            if (tab.url.match(/^https?:\/\/plnkr.co\/auth\/github\?code=/) and tab.title.match(/^Plunker/)) 
               chrome.tabs.sendMessage tabId,
                 action: "readAuth"
               , (readAuthMsg)->

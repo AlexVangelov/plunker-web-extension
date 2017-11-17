@@ -1,6 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var Promise = require("es6-promise").Promise
 var fs = require('fs');
+var path = require('path');
 
 module.exports = {
   context: __dirname + "/src",
@@ -12,19 +13,19 @@ module.exports = {
     'plunker.options': './options/index.coffee'
   },
   output: {
-    path: './build/',
+    path: path.join(__dirname, 'build'),
     filename: '[name].bundle.js'
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'ng-annotate!babel!jshint', exclude: [/node_modules/] },
-      { test: /\.coffee$/, loader: "ng-annotate!coffee-loader" },
-      { test: /\.html$/, loader: "html" },
-      { test: /\.htm$/, loader: 'ng-cache?module=ng,prefix=src:**' },
-      { test: /\.svg/, loader: 'ng-cache?module=ng,prefix=src:**' },
-      { test: /\.json$/, loader: 'ng-cache?module=ng,prefix=src:**' },
-      { test: /\.scss$/, loader: 'style!css!sass' },
-      { test: /\.png$/, loader: 'url?limit=10240' }
+      { test: /\.js$/, loader: 'ng-annotate-loader!babel!jshint', exclude: [/node_modules/] },
+      { test: /\.coffee$/, loader: "ng-annotate-loader!coffee-loader" },
+      { test: /\.html$/, loader: "html-loader" },
+      { test: /\.htm$/, loader: 'ng-cache-loader?module=ng,prefix=src:**' },
+      { test: /\.svg/, loader: 'ng-cache-loader?module=ng,prefix=src:**' },
+      { test: /\.json$/, loader: 'ng-cache-loader?module=ng,prefix=src:**' },
+      { test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader' },
+      { test: /\.png$/, loader: 'url-loader?limit=10240' }
     ]
   },
   plugins: [
@@ -64,8 +65,5 @@ module.exports = {
         });
       }
     }
-  ],
-  resolve: {
-    modulesDirectories: ["node_modules"]
-  }
+  ]
 };
